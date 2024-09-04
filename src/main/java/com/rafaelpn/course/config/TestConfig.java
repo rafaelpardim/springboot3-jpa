@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.rafaelpn.course.entities.Category;
 import com.rafaelpn.course.entities.Order;
 import com.rafaelpn.course.entities.OrderItem;
+import com.rafaelpn.course.entities.Payment;
 import com.rafaelpn.course.entities.Product;
 import com.rafaelpn.course.entities.User;
 import com.rafaelpn.course.repositories.CategoryRepository;
@@ -83,6 +84,10 @@ public class TestConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 	
 	
